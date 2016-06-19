@@ -63,14 +63,27 @@
 
 \bibitem[\protect\citeauthoryear{Crawley, Lawrie, Winkelmann, Buhl, Huang,
   Pedersen, Strand, Liesen, Fisher, Witte, et~al\mbox{.}}{Crawley
-  et~al\mbox{.}}{2001}]%
+  et~al\mbox{.}}{2001b}]%
         {energyplus}
 {Drury~B Crawley}, {Linda~K Lawrie}, {Frederick~C Winkelmann}, {Walter~F Buhl},
   {Y~Joe Huang}, {Curtis~O Pedersen}, {Richard~K Strand}, {Richard~J Liesen},
-  {Daniel~E Fisher}, {Michael~J Witte}, {and} {others}. 2001.
+  {Daniel~E Fisher}, {Michael~J Witte}, {and} {others}. 2001b.
 \newblock \showarticletitle{EnergyPlus: creating a new-generation building
   energy simulation program}.
 \newblock {\em Energy and buildings\/} {33}, 4 (2001), 319--331.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Crawley, Lawrie, Winkelmann, Buhl, Huang,
+  Pedersen, Strand, Liesen, Fisher, Witte, and Glazer}{Crawley
+  et~al\mbox{.}}{2001a}]%
+        {energyplus:2001vf}
+{D~B Crawley}, {L~K Lawrie}, {F~C Winkelmann}, {W~F Buhl}, {Y~J Huang}, {C~O
+  Pedersen}, {R~K Strand}, {R~J Liesen}, {D~E Fisher}, {M~J Witte}, {and} {J
+  Glazer}. 2001a.
+\newblock \showarticletitle{{EnergyPlus: creating a new-generation building
+  energy simulation program}}.
+\newblock {\em Energy and Buildings\/} {33}, 4 (April 2001), 319--331.
 \newblock
 
 
