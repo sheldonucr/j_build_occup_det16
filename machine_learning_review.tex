@@ -1,0 +1,52 @@
+\section{Review of Machine Learning Methods}
+We have applied two different machine learning methods for occupancy detection in a smart building. In this section, we will briefly introduce some basic concepts of machine learning method, key idea of support vector regression and neural network. Some specific tweaks in applying those two method in the model are also illustrated in the respective reviews for the two different methods.
+\subsection{Review of Support Vector Regression}
+
+The elemental idea of the regression is to seek out a function that can accurately detect future value and the generic SVR estimating function is formed
+\[
+f\left( x \right) = \left( {w \cdot \Gamma \left( x \right)} \right) + \lambda
+\label{eq:1}
+\]
+In the equation above, $w \in {R^n},$ $\lambda \in {R},$ and $\Gamma$ stands for a nonlinear transformation from $R^n$ to a high dimensional space. The transformation grants the power for a feature to be transferred into more complex dimension. Our objective is to find a value of $w$ and $\lambda$ such that number value of $x$ can be resolved via minimization of the regression risk
+\[
+%{R_{reg}}\left( f \right) = C\sum\limits_{i = 0}^l {\Gamma \left( {f\left( {{x_i}} \right) - {y_i}} \right) + \frac{1}{2}{{\left\| w \right\|}^2}}
+{R_{reg}}\left( f \right) = C\sum\limits_{i = 0}^l {{G _i} + \frac{1}{2}{{\left\| w \right\|}^2}}
+\label{eq:2}
+\]
+where ${G _i}$ is a loss function
+\[{G _i} = \left\{ {\begin{array}{*{20}{l}}
+{\left| {f\left( {{x_i}} \right) - {y_i}} \right| - \varepsilon ,{\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} \left| {f\left( {{x_i}} \right) - {y_i}} \right| \ge \varepsilon }\\
+{0,{\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} otherwise}
+\end{array}} \right.\]
+Here $C$ is a constant, and $k\left( {{x_i},x} \right)$ is known as a kernel function. Through mathematical deduction \cite{travel}, the $\varepsilon {\rm{ - }}$insensitive loss function can be minimized as
+$$
+\resizebox{1\columnwidth}{!}{
+$\frac{1}{2}\sum\limits_{i,j = 1}^l {\left( {\alpha _i^* - {\alpha _i}} \right)\left( {\alpha _j^* - {\alpha _j}} \right)k\left( {{x_i},{x_j}} \right) - \sum\limits_{i = 1}^l {\alpha _i^*\left( {{y_i} - \varepsilon } \right)} }  - {\alpha _i}\left( {{y_i} + \varepsilon } \right)$}
+$$
+
+subject to
+$
+\label{eq:5}
+\sum\limits_{i = 1}^l {\left( {\alpha  - \alpha _i^*} \right) = 0,{\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} \left( {{\alpha _i} - \alpha _i^*} \right) \in \left[ {0,C} \right]}
+$. Here ${\alpha _i}$ and $\alpha _i^*$ are Lagrange multipliers which denote solutions to the quadratic problem.
+The constant $C$ mentioned in decides penalties to estimation errors. When the value of $C$ becomes larger, the penalties to errors becomes higher, thus the regression is trained to reduce error with lower generalization. On the contrast, a small $C$ assigns lower penalties to errors which results in a higher generalization model. If $C$ becomes infinitely large, SVR would not bear any errors and generates a complex model, whereas the model would tolerate a huge number of errors if $C$ is set to zero.
+The value of $w$ in accordance with the Lagrange multipliers are already acquired before we find the value of variable $\lambda$. Using KKT conditions $\lambda$ can be calculated as follows
+\[\begin{array}{l}
+\lambda = {y_i} - \left( {w,{x_i}} \right) - \varepsilon {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} for{\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\alpha _i} \in \left( {0,C} \right)\\
+\lambda= {y_i} - \left( {w,{x_i}} \right) + \varepsilon {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} for{\kern 1pt} {\kern 1pt} {\kern 1pt} {\kern 1pt} \alpha _i^* \in \left( {0,C} \right)
+\end{array}\]
+Putting it together enables us to apply SVR without knowing the concrete transformation. By adjusting parameters in SVR model, the model is capable of accurately conducting detection on office occupancy.
+
+\subsection{Review of Neural Network}
+In cognitive science and machine learning, artificial neural networks are a set of methods inspired by biological neural networks such as central nervous systems of creatures or brains, which are applied for to anticipate outcomes that heavily rely on a great many of inputs. The connections possess numeric weights and biases that is able to be triggered on training and make detections on neural nets adapted to inputs and learning.
+
+Neural networks are methods for optimization and learning, and they generally comprise of five elements: a directed graph known as network topology whose arcs named as links, a state variable linked with each node, a weight linked with each link, a bias linked with each node, a transfer function for each node which is able to decide the state of a node. And the transfer function often takes the form as a sigmoid function or a step function.
+
+In this paper, we use feedforward neural network to establish the model to detect occupancy. The feedforward neural network is one type of neural network which has no closed paths. Its output nodes have no arcs away from them while its input nodes have no arcs to them, and other nodes are named hidden nodes. Through the network, all the nodes in the neural network will be set by propagation when the states of all the input nodes are assigned. Given a set of inputs, a feedforward network is able to calculate outputs through the mechanisms.
+
+Think of this occupancy detection we face where have access to labeled training examples $\left( {{x^{\left( i \right)}},{y^{\left( i \right)}}} \right)$. Neural networks makes an approach into defining a complicated, non-linear form of hypotheses ${h_{W,b}}\left( x \right)$, with parameters $W,b$ that we want to fit our data set. The neurons are virtually computational units that take inputs $[{x_1},{x_2},...,{x_n}]$, and outputs ${h_{W,b}}\left( x \right) = f\left( {{W^T}x} \right) = f\left( {\sum\nolimits_{i = 1}^n {{W_i}{x_i} + b} } \right)$, where $f$ is called the activation function. In this neural network, we choose $f\left( . \right)$ to be the sigmoid function
+\[f\left( z \right) = \frac{1}{{1 + \exp \left( { - z} \right)}}.\]
+
+Feedforward networks with layers become prevalent for the following reasons. Most importantly, they are found in practice to fit well in detection and estimation both on sparse set of data points and sufficient data points, and they are capable of providing the outcome for an input not existing in a training set. Through training method, the neural network can swiftly seek out a relatively good set of weights and biases to fit a current problem. And the network is able to adjust the network automatically after every time the epoch finishes, which makes it flexible in application in many aspects.
+
+In this paper, we use the conventional artificial feedforward neural network which aims at outputting accurate detected value for occupancy in a certain office. The focus on the model is to acquire a good set of features which is to feed the input layer of the neural network, and to avoid training out a obsessively complex neural network which may lead to over-fitting. After the model is established through training process, figures will be drawn to manifest the performance of the model.
