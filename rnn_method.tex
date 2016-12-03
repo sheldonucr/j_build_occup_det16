@@ -1,17 +1,13 @@
 \section{Recurrent Neural Network Based Occupancy Estimation}
 \label{sec:rnn-method}
 
-In this section, we apply the Elman recurrent neural network architecture
+In this section, we apply the Elman's recurrent neural network (ELNN) architecture shown in
 Fig.~\ref{fig:elman} to the occupancy of each room in a certain smart building.
-We describe the structure Elman architecture, how the gold-referencing data is
-computed, and the detailed works on training the networks.
-
-We construct Elman recurrent neural network architecture (as shown in
-Fig.~\ref{fig:elman}) to build the black-box model for occupancy estimation. In
-our work the size (number of neurons) of hidden layers are assigned according
-to empirical equation $N_{1,\ldots,k-1}=\frac15p+5$ and $N_k=2q$, where $N_i$
-is the size of $i$th layer, $p$ and $q$ are respectively the number of network
-inputs and outputs.
+We describe the ELNN structure, how the gold-referencing data is
+computed, and the detailed works on training the networks. ELNN architecture is used to build the black-box model for occupancy estimation. In this case the size (number of neurons) of hidden layers are assigned according
+to the empirical equation $N_{1,\ldots,k-1}=\frac15p+5$ and $N_k=2q$, where $N_i$
+is the size of $i$th layer, and $p$ and $q$ are the number of network
+inputs and outputs, respectively.
 
 \begin{figure}[t]
     \centering
@@ -33,20 +29,20 @@ it.
 We use \EP{} to simulate the room thermal behavior in a year, using various
 inputs including occupancy information. We collect the inputs and outputs (room
 temperatures) of \EP{} simulation, which is discretized into hourly data
-points, to train the Elman recurrent neural network. Given the simulated data
+points, to train ELNN. Given the simulated data
 provided by \EP{}, as shown in Fig.\ref{fig:data-flow}, we feed selected
 channels of ambient factors and other power data, along with room temperatures,
-into the Elman recurrent neural network as input. We use estimated and real
+into ELNN as input. We use estimated and real
 occupancy to drive the training process. We will configure two different
 selected datasets: one uses ambient factors and room temperatures only, another
 dataset uses ambient factors, room temperatures and HVAC cooling/heating
-powers. The output of the Elman network has multiple channels, which are
+powers. The output of ELNN has multiple channels, which are
 respectively each room's estimated people occupancy.
 
 \begin{figure}[t]
     \centering
     \includegraphics[width=0.9\columnwidth]{figs/rnn/data-flow.eps}
-    \caption{Data configuration of Elman recurrent neuron network}
+    \caption{Data configuration of Elman's recurrent neuron network.}
     \label{fig:data-flow}
 \end{figure}
 
