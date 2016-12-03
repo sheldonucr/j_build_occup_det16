@@ -5,7 +5,7 @@ In this section, we evaluate the performance (mainly accuracy) of the
 proposed occupancy estimation method on a dataset of one year using
 the building example shown in Fig.~\ref{fig:5zone}.  We picked a
 15-day data subset starting from the 3rd Sunday in August to be
-plotted in Fig.~\ref{fig:one-layer}, Fig.~\ref{fig:two-layer}. We
+plotted in Fig.~\ref{fig:one-layer} and Fig.~\ref{fig:two-layer}. We
 report the validation errors for one-layer and two-layer networks
 since they are non-trivial and more noticeable. These figures show
 that the occupancy estimation of room 1, among all the 5 rooms in this
@@ -19,7 +19,7 @@ case, having similar error situations.
     \subfloat[Conf. II: Ambient factors, room temperatures and HVAC powers]{
         \includegraphics[width=0.45\columnwidth]{figs/results/1LAmbHVACDPFAugW3-4}
     }
-    \caption{Occupancy estimation accuracy using one-layer recurrent neural network with input configuration I and II}
+    \caption{Occupancy estimation accuracy using one-layer recurrent neural network with input configuration I and II.}
     \label{fig:one-layer}
 \end{figure*}
 
@@ -31,12 +31,12 @@ case, having similar error situations.
     \subfloat[Conf. II: Ambient factors, room temperatures and HVAC powers]{
         \includegraphics[width=0.45\columnwidth]{figs/results/2LAmbHVACDPFAugW3-4}
     }
-    \caption{Occupancy estimation accuracy using two-layer recurrent neural network with input configuration I and II}
+    \caption{Occupancy estimation accuracy using two-layer recurrent neural network with input configuration I and II.}
     \label{fig:two-layer}
 \end{figure*}
 
 The training and validation error statistics are shown in
-Table~\ref{tab:terr-stat} and Table~\ref{tab:verr-stat} respectively.
+Table~\ref{tab:terr-stat} and Table~\ref{tab:verr-stat}, respectively.
 In the input configuration I, we use ambient and room temperatures
 only as the inputs (this is similar to situation in which we only know
 temperature information from thermal sensors); in the input
@@ -50,7 +50,7 @@ $p_i^{\text{RNN}}$ is people occupancy estimated by the RNN and
 $p_i^{\text{EP}}$ is referencing value used in \EP{}. Note that we may
 have zero people in a room (so the occupancy value $p_i^{EP} = 0$), so
 no relative errors are used. Also, occupancy values can be
-non-integrer numbers as the estimated number of people in a room is a
+non-integer numbers as the estimated number of people in a room is a
 average number in a period.
 
 In Table~\ref{tab:terr-stat} and Table~\ref{tab:verr-stat}, average
@@ -76,7 +76,7 @@ data configuration I and II.
     \end{tabular}
     \endgroup
     \caption{Training error statistics of three Elman architectures using two
-        different input configurations}
+        different input configurations.}
     \label{tab:terr-stat}
 \end{table}
 
@@ -97,7 +97,7 @@ data configuration I and II.
     \end{tabular}
     \endgroup
     \caption{Validation error statistics of three Elman architectures using two
-        different input configurations}
+        different input configurations.}
     \label{tab:verr-stat}
 \end{table}
 
