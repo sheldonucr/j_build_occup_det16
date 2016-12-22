@@ -27,19 +27,21 @@ automatically controlled to reduce energy consumption while keeping
 human comfort.
 
 Due to the importance of detecting building occupancy, many methods
-have been proposed in the past using different technologies such as passive infrared sensors\cite{Dodier:energy06},  wireless camera sensor network \cite{Kamthe:EWSN09}, and applying sound level,
-case temperature, carbon-dioxide (CO2) and motion to estimate
-occupancy number~\cite{Ekwevugbe:DEST13}.  
-Preheat \cite{8.10} built rooms with active radio frequency
-identification (RFID) and sensors to detect home occupancy. Mozer
-\cite{8.9} proposed a neural network method by using the history data
-from embedded motion sensors and actives RFID to explore occupancy
-rate. Thermostat \cite{8.11} also devoted a similar approach through
-the employment of magnetic reed switches and passive infrared sensors
-to take control of the HVAC system at home. However, those methods are
-more expensive for deployment as dedicated equipment is required.
+have been proposed in the past using different technologies such as
+passive infrared sensors\cite{Dodier:energy06}, wireless camera sensor
+network \cite{Kamthe:EWSN09}, and applying sound level, case
+temperature, carbon-dioxide (CO2) and motion to estimate occupancy
+number~\cite{Ekwevugbe:DEST13}.  Preheat \cite{8.10} built rooms with
+active radio frequency identification (RFID) and sensors to detect
+home occupancy. Mozer \cite{8.9} proposed a neural network method by
+using the history data from embedded motion sensors and actives RFID
+to explore occupancy rate. Thermostat \cite{8.11} also devoted a
+similar approach through the employment of magnetic reed switches and
+passive infrared sensors to take control of the HVAC system at
+home. However, those methods are more expensive for deployment as
+dedicated equipment is required.
 
-Many papers have given an approach under the circumstance that the
+Many works have given an approach under the circumstance that the
 detection requires a comparatively strict requirements for sensors,
 and obviously the requirements of sensors resulting in transformations
 of infrastructures may dramatically increase expenditure when it comes
@@ -88,30 +90,42 @@ leakage of personal data, thus threatening personal privacy.
 % segment of data set is acquired from EnergyPlus, with which we combine
 % real data to make detection on office occupancy.
 
-Due to the fact our approach is based on the existing office located in Chicago, hence it is highly related to the infrastructures of the office upon which we build our model including internal
-materials, internal loads, space conditioning, location, simulation
-period, ground temperatures, walls, floors, roofs, etc. Before we
-establish this model, we need to confirm some parameters of the office
-of a building. This model has a high demand for knowing the detail of
-a certain room or office, even the infrastructure of a building. We
-need the specific parameters of a room to establish a model and get
-access to a vast amount of data generated via EnergyPlus.
+% Due to the fact our approach is based on the existing office located
+% in Chicago, hence it is highly related to the infrastructures of the
+% office upon which we build our model including internal materials,
+% internal loads, space conditioning, location, simulation period,
+% ground temperatures, walls, floors, roofs, etc. Before we establish
+% this model, we need to confirm some parameters of the office of a
+% building. This model has a high demand for knowing the detail of a
+% certain room or office, even the infrastructure of a building. We need
+% the specific parameters of a room to establish a model and get access
+% to a vast amount of data generated via EnergyPlus.
 
 In this work, we propose a novel approach to detect occupancy under
-specific conditions by applying machine learning methods, while it does
-not require plenty of sensors to be installed in a certain building where as it makes detection based on historical data. We generate the mathematical model based on support vector regression (SVR) method and neural network detect occupancy with two sets of features in correspondence with different convenience. Feeding off
-the features generated from EnergyPlus, the SVR model is able to yield
+specific conditions by applying machine learning methods, while it
+does not require plenty of sensors to be installed in a certain
+building where as it makes detection based on historical data. We
+generate the mathematical model based on support vector regression
+(SVR) method and neural network detect occupancy with two sets of
+features in correspondence with different convenience. Feeding off the
+features generated from EnergyPlus, the SVR model is able to yield
 highly accurate results for occupancy detection which is a convenient
-and new attempt in this field. The model displays benefits of not
-requiring highly-precise data set from sensors, therefore, it is able
-to reduce the equipment expenditure in modern buildings given the fast
-development of smart building, and two sets of features make it to be
-conveniently applied under different circumstances. The experiments are performed by using a realistic building simulation program, \EP{}, from Department of Energy., which can model the various
-time-series inputs to a building such as ambient temperature, heating,
-ventilation, and air-conditioning inputs, power consumption of
-electronic equipment, lighting and number of occupants in a room
-sampled in each hour and produce resulting temperature traces of zones
-(rooms). The next section describes \EP{} that is further applied to three machine learning based methods: SVR, forward neural network (FNN), and Elman's neural network (ELNN).
+and new attempt in this field. 
+
+The model displays benefits of not requiring highly-precise data set
+from sensors, therefore, it is able to reduce the equipment
+expenditure in modern buildings given the fast development of smart
+building, and two sets of features make it to be conveniently applied
+under different circumstances. The experiments are performed by using
+a realistic building simulation program, \EP{}, from Department of
+Energy., which can model the various time-series inputs to a building
+such as ambient temperature, heating, ventilation, and
+air-conditioning inputs, power consumption of electronic equipment,
+lighting and number of occupants in a room sampled in each hour and
+produce resulting temperature traces of zones (rooms). The next
+section describes \EP{} that is further applied to three machine
+learning based methods: SVR, forward neural network (FNN), and Elman's
+neural network (ELNN).
 
 %We studied three machine learning based methods. In supporting vector
 %machine based methods, two sets of features are offered to feed off
