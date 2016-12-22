@@ -6,7 +6,7 @@
 #  in the makefile: dvi, pdf, paper, commit, update, clean 
 #  The default command is 'dvi' when you type 'make' only.
 #
-PAPER = tcps8
+PAPER = tcps8etc
 #
 FORMAT = letter
 LATEX  = latex
