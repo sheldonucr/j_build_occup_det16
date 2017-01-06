@@ -1,12 +1,12 @@
 \section{Review of Machine Learning Methods}
-%We have applied two different machine learning methods for occupancy detection in a smart building. 
+%We have applied two different machine learning methods for occupancy detection in a smart building.
 
-This section briefly introduces some basic concepts of machine learning methods like support vector regression (SVR) and neural networks. Some specific tweaks in applying those methods in the model are also illustrated herein.
+This section briefly introduces some basic concepts of machine learning methods like support vector regression (SVR) and recurrent neural network (RNN). Some specific tweaks in applying those methods in the model are also illustrated herein.
 \subsection{Review of Support Vector Regression}
 
 The elemental idea of the regression is to seek out a function that can accurately detect future values and the generic SVR estimating function is formed as
 \[
-f\left( x \right) = \left( {w \cdot \Gamma \left( x \right)} \right) + \lambda
+f\left( x \right) =  {w \cdot \Gamma \left( x \right)}  + \lambda
 \label{eq:1}
 \]
 In the equation above, $w \in {R^n},$ $\lambda \in {R},$ and $\Gamma$ stands for a nonlinear transformation from $R^n$ to a high dimensional space. The transformation grants the power for a feature to be transferred into more complex dimension. Our objective is to find a value of $w$ and $\lambda$ such that the value of $x$ can be resolved via minimization of the regression risk
@@ -25,7 +25,6 @@ $$
 \resizebox{1\columnwidth}{!}{
 $\frac{1}{2}\sum\limits_{i,j = 1}^l {\left( {\alpha _i^* - {\alpha _i}} \right)\left( {\alpha _j^* - {\alpha _j}} \right)k\left( {{x_i},{x_j}} \right) - \sum\limits_{i = 1}^l {\alpha _i^*\left( {{y_i} - \varepsilon } \right)} }  - {\alpha _i}\left( {{y_i} + \varepsilon } \right)$}
 $$
-
 subject to
 $
 \label{eq:5}
@@ -39,16 +38,46 @@ The value of $w$ in accordance with the Lagrange multipliers is already acquired
 \end{array}\]
 Putting it together enables us to apply SVR without knowing the concrete transformation. By adjusting parameters in SVR model, it is capable of accurately conducting detection on office occupancy.
 
-\subsection{Review of Neural Network}
-In cognitive science and machine learning, artificial neural networks are a set of methods inspired by biological neural networks such as central nervous systems of creatures or brains, which are applied to anticipate outcomes that heavily rely on many of inputs. The connections possess numeric weights and biases that are able to be triggered on training and make detections on neural nets adapted to inputs and learning.
+\subsection{Review of Recurrent Neural Network }
+Learning based techniques such as neural networks, which is composed of
+multiple processing layers, can learn representations of data with
+multiple levels of abstraction. Deep learning techniques with many layers recently
+have dramatically improved the state-of-the-art
+in speech recognition and image recognition~\cite{zhao13}.
 
-Neural networks are methods for optimization and learning, and they generally comprise five elements: a directed graph known as network topology whose arcs are named as links, a state variable linked to each node, a weight linked to each link, a bias linked to each node, and a transfer function for each node that is able to decide the state of a node. In many cases, the transfer function often takes the form as a sigmoid function or a step function.
+A recurrent neural network (RNN) is constructed by introducing
+internal status holders to a memory-less network so that it can deal
+with time-series data. The internal status holders store outputs of
+designated neurons and usually function as feedbacks into other
+neurons. The application of feedback enables RNNs to acquire
+time-dependent state representations, making them suitable devices for
+applications like time-dependent non-linear prediction, plant control,
+etc.~\cite{zhao8}. There are many RNN structures
+proposed by varying the form of the recurrent
+feedbacks~~\cite{zhao6,zhao8,zhao17}.
 
-In this work, we use a feedforward neural network (FNN) topology to establish the model to detect occupancy. The FNN is one type of neural network that has no closed paths, its output nodes have no arcs away from them while its input nodes have no arcs to them, and the other nodes are named hidden nodes. Through the network, all the nodes in the neural network can be set by propagation when the states of all the input nodes are assigned. Given a set of inputs, FNN is able to calculate outputs through their implemented mechanisms.
+We apply the Elman recurrent neural network architecture as shown in
+Fig.~\ref{fig:elman} to the occupancy of each room in a certain smart building.
+We describe the structure Elman architecture, how the gold-referencing data is
+computed, and the detailed works on training the networks. We construct Elman recurrent neural network architecture (as shown in Fig.~\ref{fig:elman}) to build the black-box model for occupancy detection. In
+our work the size (number of neurons) of hidden layers are assigned according
+to empirical equation $N_{1,\ldots,k-1}=\frac15p+5$ and $N_k=2q$, where $N_i$
+is the size of $i$th layer, $p$ and $q$ are respectively the number of network
+inputs and outputs. We will focus on applying the Elman recurrent network
+architecture (ELNN)~\cite{zhao6}, which applies local
+recurrent feedback on each layer of neurons, which shows good
+performance for many time-series based learning (like voice
+recognition).
 
-Thinking on occupancy detection we face where we have access to labeled training examples $\left( {{x^{\left( i \right)}},{y^{\left( i \right)}}} \right)$. Thus, neural networks make an approach into defining a complicated and non-linear form of hypotheses ${h_{W,b}}\left( x \right)$, with weights and biases parameters $W,b$ that are established to fit our data set. The neurons are virtually computational units that take inputs $[{x_1},{x_2},...,{x_n}]$, and outputs ${h_{W,b}}\left( x \right) = f\left( {{W^T}x} \right) = f\left( {\sum\nolimits_{i = 1}^n {{W_i}{x_i} + b} } \right)$, where $f$ is called the activation function. In this neural network, we choose $f\left( . \right)$ to be the sigmoid function
-\[f\left( z \right) = \frac{1}{{1 + \exp \left( { - z} \right)}}.\]
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.9\columnwidth]{figs/rnn/elman}
+    \caption{Architecture of Elman Recurrent Neural Network}
+    \label{fig:elman}
+\end{figure}
 
-Feedforward networks with layers become prevalent for the following reasons: Most importantly, they are found in practice to fit well in detection and estimation both on sparse set of data points and sufficient data points, and they are capable of providing the outcome for an input not existing in a training set. Through a training method, the neural network can swiftly seek out a relatively good set of weights and biases to fit a current problem, and the topology is able to adjust the network automatically after every time the epoch finishes, thus providing flexibility in applications.
 
-In this article, we use the conventional artificial FNN that aims at outputting accurate detected value for occupancy in a certain office. The focus on the model is to acquire a good set of features which is to feed the input layer of the neural network, and to avoid training out an obsessively complex neural network, which may lead to over-fitting. After the model is established through a training process, figures will be drawn to manifest its performance.
+In theoretical aspect, training a neural network is equivalent to the optimization problem to minimize cost function. Therefore the neural network training problem can be solved by applying existing optimization method such as gradient decent, Broyden-Fletcher-Goldfarb-Shanno (BFGS) algorithm
+\cite{zhao9}, and the Quasi-Newton method on the cost function. In practice, algorithms with lower computational cost has been developed. Back-propagation algorithm is a widely-used algorithm and has been well studied \cite{zhao10}. It collects errors in weighting matrices in a backward propagation, after the errors of output vectors have been observed in each epoch. Based on the back-propagation algorithm, many improvements have been developed such as the resilient back-propagation (RProp) method \cite{zhao18}, which is more adaptive approach, and a further improvement method: RPropMinus \cite{zhao11}, which has an overall better performance in reducing average error in late training phase. The back-propagation algorithm family has also been extended to train recurrent neural networks. Back-propagation through time (BPTT) \cite{zhao20} unfolds every network activation of a
+continuous sequence. Back-propagation through structure delivers more computational efficiency on
+arbitrary structured networks.

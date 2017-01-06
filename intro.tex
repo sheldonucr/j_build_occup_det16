@@ -21,17 +21,17 @@ building or a room has applications ranging from energy reduction
 to security monitoring.
 % Smart building and Building Energy and Comfort Management systems
 For instance, occupancy detection is critical for energy and comfort management
-system in a smart building~\cite{Nguyen:energy13}.
+system in a smart building~\cite{Nguyen2013Energy}.
 Using the occupancy information, HVAC and lighting can be
 automatically controlled to reduce energy consumption while keeping
 human comfort.
 
 Due to the importance of detecting building occupancy, many methods
 have been proposed in the past using different technologies such as
-passive infrared sensors\cite{Dodier:energy06}, wireless camera sensor
-network \cite{Kamthe:EWSN09}, and applying sound level, case
+passive infrared sensors~\cite{Dodier2006Building}, wireless camera sensor
+network \cite{Erickson2009Energy}, and applying sound level, case
 temperature, carbon-dioxide (CO2) and motion to estimate occupancy
-number~\cite{Ekwevugbe:DEST13}.  Preheat \cite{8.10} built rooms with
+number~\cite{Ekwevugbe2013Real}.  Preheat \cite{8.10} built rooms with
 active radio frequency identification (RFID) and sensors to detect
 home occupancy. Mozer \cite{8.9} proposed a neural network method by
 using the history data from embedded motion sensors and actives RFID
@@ -110,53 +110,18 @@ generate the mathematical model based on support vector regression
 features in correspondence with different convenience. Feeding off the
 features generated from EnergyPlus, the SVR model is able to yield
 highly accurate results for occupancy detection which is a convenient
-and new attempt in this field. 
+and new attempt in this field.
 
 The model displays benefits of not requiring highly-precise data set
 from sensors, therefore, it is able to reduce the equipment
 expenditure in modern buildings given the fast development of smart
 building, and two sets of features make it to be conveniently applied
 under different circumstances. The experiments are performed by using
-a realistic building simulation program, \EP{}, from Department of
+a realistic building simulation program, EnergyPlus, from Department of
 Energy., which can model the various time-series inputs to a building
 such as ambient temperature, heating, ventilation, and
 air-conditioning inputs, power consumption of electronic equipment,
 lighting and number of occupants in a room sampled in each hour and
 produce resulting temperature traces of zones (rooms). The next
-section describes \EP{} that is further applied to three machine
-learning based methods: SVR, forward neural network (FNN), and Elman's
-neural network (ELNN).
-
-%We studied three machine learning based methods. In supporting vector
-%machine based methods, two sets of features are offered to feed off
-%the model for different conveniences. The first set of feature is
-%comprised of 4 features including solar factor, working time, indoor
-%temperature and outdoor temperature which are regarded as easily
-%obtained features whereas the second set of features adds light energy
-%as the fifth feature. In light of the experimental results, 4-feature
-%model has a quite accurate detection rate which gives a 0.638 average
-%error and 0.0532 error ratio. However, 5-feature SVR model giving a
-%0.317 average error and 0.0264 error ratio has a better performance
-%than 4-feature model which we consider as moderating the under-fitting
-%issue. This indicates using SVR model is a viable option when it comes
-%to occupancy detection given its convenience in data acquirement. In
-%neural network, only 5-feature model is established and it manifests
-%similar accuracy on occupancy detection. 
-
-%In the recurrent neutral network (RNN) based method, RNN is trained to
-%detec the number of people in a room based on the room temperature,
-%ambient temperature, and other related heat sources. We apply the
-%Elman's recurrent neural network, which has local feedbacks in each
-%layer. We use a simple formula to calculate the RNN layer number,
-%layer size to configure RNN architecture to avoid overfitting and
-%underfitting problems.
-  
-%Experimental results from a case study of a 5-room office show that
-%ELNN can lead to very accurate occupancy behavior prediction. Using
-%only ambient and room temperatures as input, ELNN can deliver average
-%estimation error 0.044 in terms of number of people; among all the
-%estimated occupancy, only 0.71\% of estimated points have errors
-%greater than 0.5. If we also include HVAC cooling/heating powers,
-%which are not collectible by equiped temperature sensors, ELNN can
-%give more precise evaluation on occupancy with average error 0.0056
-%(number of people) and maximum error 0.288.
+section describes EnergyPlus that is further applied to two machine
+learning based methods: SVR and Elman's recurrent neural network (ELNN).
