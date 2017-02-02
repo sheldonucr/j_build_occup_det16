@@ -44,7 +44,7 @@ Learning based techniques such as neural networks, which is composed of
 multiple processing layers, can learn representations of data with
 multiple levels of abstraction. Deep learning techniques with many layers recently
 have dramatically improved the state-of-the-art
-in speech recognition and image recognition~\cite{zhao13}.
+in speech recognition and image recognition~\cite{schmidhuber2014deep}.
 
 A recurrent neural network (RNN) is constructed by introducing
 internal status holders to a memory-less network so that it can deal
@@ -53,9 +53,9 @@ designated neurons and usually function as feedbacks into other
 neurons. The application of feedback enables RNNs to acquire
 time-dependent state representations, making them suitable devices for
 applications like time-dependent non-linear prediction, plant control,
-etc.~\cite{zhao8}. There are many RNN structures
+etc.~\cite{haykin2004compreh}. There are many RNN structures
 proposed by varying the form of the recurrent
-feedbacks~~\cite{zhao6,zhao8,zhao17}.
+feedbacks~~\cite{elman1990finding,haykin2004compreh,puskorius1996dynamic}.
 
 We apply the Elman recurrent neural network architecture as shown in
 Fig.~\ref{fig:elman} to the occupancy of each room in a certain smart building.
@@ -65,7 +65,7 @@ our work the size (number of neurons) of hidden layers are assigned according
 to empirical equation $N_{1,\ldots,k-1}=\frac15p+5$ and $N_k=2q$, where $N_i$
 is the size of $i$th layer, $p$ and $q$ are respectively the number of network
 inputs and outputs. We will focus on applying the Elman recurrent network
-architecture (ELNN)~\cite{zhao6}, which applies local
+architecture (ELNN)~\cite{elman1990finding}, which applies local
 recurrent feedback on each layer of neurons, which shows good
 performance for many time-series based learning (like voice
 recognition).
@@ -79,6 +79,6 @@ recognition).
 
 
 In theoretical aspect, training a neural network is equivalent to the optimization problem to minimize cost function. Therefore the neural network training problem can be solved by applying existing optimization method such as gradient decent, Broyden-Fletcher-Goldfarb-Shanno (BFGS) algorithm
-\cite{zhao9}, and the Quasi-Newton method on the cost function. In practice, algorithms with lower computational cost has been developed. Back-propagation algorithm is a widely-used algorithm and has been well studied \cite{zhao10}. It collects errors in weighting matrices in a backward propagation, after the errors of output vectors have been observed in each epoch. Based on the back-propagation algorithm, many improvements have been developed such as the resilient back-propagation (RProp) method \cite{zhao18}, which is more adaptive approach, and a further improvement method: RPropMinus \cite{zhao11}, which has an overall better performance in reducing average error in late training phase. The back-propagation algorithm family has also been extended to train recurrent neural networks. Back-propagation through time (BPTT) \cite{zhao20} unfolds every network activation of a
+\cite{heath2010sci}, and the Quasi-Newton method on the cost function. In practice, algorithms with lower computational cost has been developed. Back-propagation algorithm is a widely-used algorithm and has been well studied \cite{hecht1988backprop}. It collects errors in weighting matrices in a backward propagation, after the errors of output vectors have been observed in each epoch. Based on the back-propagation algorithm, many improvements have been developed such as the resilient back-propagation (RProp) method \cite{riedmiller1993direct}, which is more adaptive approach, and a further improvement method: RPropMinus \cite{igel2003empirical}, which has an overall better performance in reducing average error in late training phase. The back-propagation algorithm family has also been extended to train recurrent neural networks. Back-propagation through time (BPTT) \cite{werbos1990backprop} unfolds every network activation of a
 continuous sequence. Back-propagation through structure delivers more computational efficiency on
 arbitrary structured networks.

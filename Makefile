@@ -73,5 +73,5 @@ update:
 
 # clean all the temp files
 clean:
-	rm -f *.aux *.dvi *.ps *.log *~ *.pdf *.bak *.blg core
+	rm -f *.aux *.dvi *.ps *.log *~ *.pdf *.bak *.blg *.bbl core
 
