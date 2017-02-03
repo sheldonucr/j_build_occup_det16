@@ -102,10 +102,10 @@
 \title{Thermal-Sensor-Based Occupancy Detection For Smart Buildings Using Machine Learning Methods}
 
 \author{ \small
-QI HUA \\
-Shanghai Jiao Tong University\\
 HENGYANG ZHAO\\
 University of California, Riverside\\
+QI HUA \\
+Shanghai Jiao Tong University\\
 HAIBAO CHEN and YAOYAO YE\\
 Shanghai Jiao Tong University\\
 HAI WANG \\
@@ -118,7 +118,7 @@ ESTEBAN TLELO-CUAUTLE \\
 INAOE and CINVESTAV, Mexico
 }
 
-\markboth{QI HUA \textit{et al.}}{Thermal-Sensor-Based Occupancy Detection For Smart Buildings Using Machine Learning Methods}
+\markboth{Hengyang Zhao \textit{et al.}}{Thermal-Sensor-Based Occupancy Detection For Smart Buildings Using Machine Learning Methods}
 
 \begin{abstract}
   In this article, we propose a novel approach to detect the occupancy
@@ -190,43 +190,48 @@ This work is supported by the National Science Foundation, under
 
 \section{Conclusion and future works}
 \label{sec:conclution}
-A mathematical model based on SVR and RNN to detect
-employee occupancy in a smart building, has been introduced. Two
-machine learning based occupancy detection methods for smart buildings
-through the thermal sensor temperature information and/or possible
-heat source information, have been discussed. In all experiments, we
-used the realistic building simulation program ENERGYPLUS to collect
-training and validation datasets. Ambient factors, room temperature,
-and/or HVAC power were selected as features to train Elman's recurrent
-neural network (ELNN). In SVR model, two sets of features are offered
-to feed off the model for different conveniences. The first set of
-features is comprised of 4 features including solar factor, working
-time, indoor temperature and outdoor temperature, which are regarded
-as easily obtained features; whereas the second set of features adds
-light energy as the fifth feature. In light of the experimental
-results, 4-feature model has a quite accurate detection rate which
-gives a 0.638 average error and 0.0532 error ratio. However, 5-feature
-SVR model giving a 0.317 average error and 0.0264 error ratio has a
-better performance than 4-feature model, which we consider as
-moderating the under-fitting issue. This indicates that using SVR
-model is a viable option when it comes to occupancy detection given
-its convenience in data acquirement.
 
-In the recurrent neutral network based method, the resulting Elman
-network can estimate occupancy information of each room of a building
-with high accuracy. Using ambient factors and room temperatures only,
-the average estimation error is 0.044, and only 0.71\% of the
-estimated points have errors greater than 0.5 in terms of number of
-people. This indicates that it is possible to precisely estimate the
-occupancy only using ambient factors and room temperatures. With HVAC
-powers added, the estimation can be even more accurate with even
-simpler neural networks.
+In this article, we propose a recurrent neural network based method to
+detect the occupancy behavior of a building through the temperature
+and/or possible heat source information. Two machine learning based
+methods: supporting vector machine (SVM) and recurrent neutral
+networks (RNN) for smart buildings through the thermal sensor
+temperature information and/or possible heat source information, have
+been discussed. In all experiments, we used the realistic building
+simulation program EnergyPlus to collect training and validation
+datasets. Ambient factors, room temperature, and/or HVAC power were
+selected as features to train Elman's recurrent neural network
+(ELNN). In SVR model, two sets of features are offered to feed off the
+model for different conveniences. The first set of features is
+comprised of 4 features including solar factor, working time, indoor
+temperature and outdoor temperature, which are regarded as easily
+obtained features; whereas the second set of features adds light
+energy as the fifth feature. In light of the experimental results,
+4-feature model has a quite accurate detection rate which gives a
+0.638 average error and 0.0532 error ratio. However, 5-feature SVR
+model giving a 0.317 average error and 0.0264 error ratio has a better
+performance than 4-feature model, which we consider as moderating the
+under-fitting issue. This indicates that using SVR model is a viable
+option when it comes to occupancy detection given its convenience in
+data acquirement. In the recurrent neutral network based method, the
+resulting Elman network can estimate occupancy information of each
+room of a building with high accuracy. Using ambient factors and room
+temperatures only, the average estimation error is 0.044, and only
+0.71\% of the estimated points have errors greater than 0.5 in terms
+of number of people. This indicates that it is possible to precisely
+estimate the occupancy only using ambient factors and room
+temperatures. With HVAC powers added, the estimation can be even more
+accurate with even simpler neural networks.  Our study further shows
+both methods can deliver similar accuracy in the occupancy detection.
+But that SVR model is more stable for changing features of the system,
+while the RNN method can deliver more accuracy when the features used
+in the model do not change a lot.
 
-As a conclusion, what influences the model is the number of features
-and the number of data points, virtually the two different methods SVR
-and RNN work similarly well for solving this problem. However,
-further improvement is likely to occur when the model is refined to be
-able self-improved using current data set in the future.
+% As a conclusion, what influences the model is the number of features
+% and the number of data points, virtually the two different methods SVR
+% and RNN work similarly well for solving this problem. However,
+% further improvement is likely to occur when the model is refined to be
+% able self-improved using current data set in the future.
 
 
 

@@ -346,11 +346,29 @@ the estimation error grows (0.38\%), but stays in acceptable level.
 \label{fig:comparison}
 \end{figure}
 
-In this section, we compare the accuracy and characteristics of the occupancy detection result respectively from SVR and RNN.
-Fig.~\ref{fig:comparison} shows the result in which the black curve stands for the original outcome, the red curve stands for the SVR outcome, and the blue curve stands for the RNN outcome.
-
-Those results are generated based on the same features and number of data, which means, the different results shown in the figure are only influenced by the model it self. From the figure, it is easy to make a summarization that both methods quite fit the original curve which means both model could be put into practice in detecting occupancy for a certain room at a certain time.
-
-In light of the experimental results, there is small fluctuation in Max. error when SVR model is applied. This indicates the maximum error of SVR model will stay at a stable range when the features of the model are slightly altered. In comparison, Max. error of RNN model is relatively sensitive, which doubles, triples, or rapidly diminishes when the features of the model is altered. This phenomenon also applies for the Avg. error, the numeric value of Avg. error swings more for RNN model than it is for SVR model under the situation that the features are changed. This could imply the two different characters of different models, which gives the user different flexibility to apply for those two models. SVR model is used when the features of a model will change from every now and then, in order to keep the detection precision at a stable range. RNN model is applied when features are not changed in a real context, which possess a even higher precision in detecting occupancy compared to SVR.
+In this section, we compare the accuracy and characteristics of the
+occupancy detection result respectively from SVR and RNN.
+Fig.~\ref{fig:comparison} shows the result in which the black curve
+stands for the original outcome, the red curve stands for the SVR
+outcome, and the blue curve stands for the RNN outcome.  Those results
+are generated based on the same features and number of data, which
+means, the different results shown in the figure are only influenced
+by the models. From the figure, we can see that the results from both
+methods agree well with the original curves.  Furthmore, we obseve
+there is a small fluctuation in Max. error when the SVR model is
+applied. This indicates the maximum error of the SVR model will stay
+at a stable range when the features of the model are slightly
+changed. In comparison, Max. error of the RNN model is relatively more
+sensitive. The Max. error may double, triple, or rapidly diminishes
+when the features of the model is changed. This phenomenon is also
+observed in the Avg. error. The numeric value of Avg. error swings
+more for the RNN model than for the SVR model under the situation that
+the features are changed. This could imply the two different
+characteristic behaviors of the two models, which gives the user the
+flexibility to apply for those two models. The SVR model is used when
+the features of a model will change from every now and then, in order
+to keep the detection precision at a stable range. The RNN model is
+applied when features are not changed in a real context, which possess
+a even higher precision in detecting occupancy compared to SVR.
 
 
